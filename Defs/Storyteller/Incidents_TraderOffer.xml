@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <IncidentDef>
+    <defName>acat_OrbitalTraderVisitingOffer</defName>
+    <label>Offer from Orbital Traders Hub</label>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>Arakos.CallATrader.IncidentWorker_OrbitalTraderVisitingOffer</workerClass>
+    <category>Misc</category>
+    <baseChance>3</baseChance>
+    <requireColonistsPresent>True</requireColonistsPresent>
+  </IncidentDef>
+
+</Defs>

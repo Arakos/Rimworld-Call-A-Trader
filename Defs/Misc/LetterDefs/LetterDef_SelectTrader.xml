@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <LetterDef ParentName="CustomChoiceLetterBase">
+    <defName>acat_SelectTraderLetter</defName>
+    <letterClass>Arakos.CallATrader.ChoiceLetter_SelectTrader</letterClass>
+  </LetterDef>
+
+</Defs>
