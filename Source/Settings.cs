@@ -36,11 +36,11 @@ namespace Arakos.CallATrader
             Listing_Standard list = new Listing_Standard();
             list.Begin(rect);
             list.CheckboxLabeled(Constants.CAN_SELECT_KIND.Translate(), ref canSelectTraderType, (Constants.CAN_SELECT_KIND + Constants.DESCRIPTION).Translate());
-            list.Label(Constants.COSTS_RANGE.Translate(), -1, (Constants.COSTS_RANGE + Constants.DESCRIPTION).Translate());
+            list.Label(Constants.COSTS_RANGE.Translate(), tooltip: (Constants.COSTS_RANGE + Constants.DESCRIPTION).Translate());
             list.IntRange(ref costRange, boundsCostRange.min, boundsCostRange.max);
-            list.Label(Constants.DELAY_RANGE.Translate(), -1, (Constants.DELAY_RANGE + Constants.DESCRIPTION).Translate());
+            list.Label(Constants.DELAY_RANGE.Translate(), tooltip: (Constants.DELAY_RANGE + Constants.DESCRIPTION).Translate());
             list.IntRange(ref delayRange, boundsDelayRange.min, boundsDelayRange.max);
-            list.Label(Constants.COOLDOWN_RANGE.Translate(), -1, (Constants.COOLDOWN_RANGE + Constants.DESCRIPTION).Translate());
+            list.Label(Constants.COOLDOWN_RANGE.Translate(), tooltip: (Constants.COOLDOWN_RANGE + Constants.DESCRIPTION).Translate());
             list.IntRange(ref cooldownRange, boundsCooldownRange.min, boundsCooldownRange.max);
             list.End();
         }
