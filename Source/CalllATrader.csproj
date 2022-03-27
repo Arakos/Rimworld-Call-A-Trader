@@ -116,7 +116,7 @@
 	-->
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!--<PropertyGroup>
-    <PostBuildEvent>"$(ProjectDir)Install.bat" $(ConfigurationName) "$(ProjectDir)" "$(ProjectName)" "About Assemblies Defs Languages Textures v1.1 v1.2 v1.3" "LoadFolders.xml"</PostBuildEvent>
-  </PropertyGroup>-->
+  <PropertyGroup>
+    <PostBuildEvent>"$(ProjectDir)Install.bat"</PostBuildEvent>
+  </PropertyGroup>
 </Project>
