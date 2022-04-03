@@ -57,7 +57,7 @@ namespace Arakos.CallATrader
                 // queue the 'trader visiting offer' incident
                 Find.Storyteller.incidentQueue.Add(
                     new QueuedIncident(
-                        new FiringIncident(DefDatabase<IncidentDef>.GetNamed(Constants.INCIDENT_DEF_NAME), null, new IncidentParms() { target = base.Map }),
+                        new FiringIncident(DefDatabase<IncidentDef>.GetNamed(Constants.INCIDENT_DEF_NAME), null, new IncidentParms() { target = base.Map, forced = true }),
                         Find.TickManager.TicksGame + Rand.Range(1000, 6000))
                     );
 

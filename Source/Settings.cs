@@ -21,6 +21,7 @@ namespace Arakos.CallATrader
         public IntRange delayRange = new IntRange(2, 5);
         public IntRange cooldownRange = new IntRange(10, 30);
         public bool canSelectTraderType = true;
+        public bool randomEventAllowed = true;
 
         public override void ExposeData()
         {
@@ -29,19 +30,27 @@ namespace Arakos.CallATrader
             Scribe_Values.Look(ref delayRange, Constants.DELAY_RANGE, new IntRange(2, 5), true);
             Scribe_Values.Look(ref cooldownRange, Constants.COOLDOWN_RANGE, new IntRange(10, 30), true);
             Scribe_Values.Look(ref canSelectTraderType, Constants.CAN_SELECT_KIND, true, true);
+            Scribe_Values.Look(ref randomEventAllowed, Constants.RANDOM_EVENT_ALLOWED, true, true);
         }
 
         public void DoSettingsWindowContents(Rect rect)
         {
             Listing_Standard list = new Listing_Standard();
             list.Begin(rect);
+
+            list.CheckboxLabeled(Constants.RANDOM_EVENT_ALLOWED.Translate(), ref randomEventAllowed, (Constants.RANDOM_EVENT_ALLOWED + Constants.DESCRIPTION).Translate());
+
             list.CheckboxLabeled(Constants.CAN_SELECT_KIND.Translate(), ref canSelectTraderType, (Constants.CAN_SELECT_KIND + Constants.DESCRIPTION).Translate());
+            
             list.Label(Constants.COSTS_RANGE.Translate(), tooltip: (Constants.COSTS_RANGE + Constants.DESCRIPTION).Translate());
             list.IntRange(ref costRange, boundsCostRange.min, boundsCostRange.max);
+
             list.Label(Constants.DELAY_RANGE.Translate(), tooltip: (Constants.DELAY_RANGE + Constants.DESCRIPTION).Translate());
             list.IntRange(ref delayRange, boundsDelayRange.min, boundsDelayRange.max);
+
             list.Label(Constants.COOLDOWN_RANGE.Translate(), tooltip: (Constants.COOLDOWN_RANGE + Constants.DESCRIPTION).Translate());
             list.IntRange(ref cooldownRange, boundsCooldownRange.min, boundsCooldownRange.max);
+
             list.End();
         }
 

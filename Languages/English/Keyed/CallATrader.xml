@@ -25,4 +25,6 @@
 	<acat.cooldownrange.description>Range of cooldown time between  the 'Orbital Traders Hub' can be called once again</acat.cooldownrange.description>
 	<acat.canselectkind>Freely selectable trader type</acat.canselectkind>
 	<acat.canselectkind.description>Determines if you can choose between all or only one random type of trader to show up</acat.canselectkind.description>
+	<acat.randomeventallowed>Enable the radom event</acat.randomeventallowed>
+	<acat.randomeventallowed.description>Enable the 'Orbital Traders Hub' offer-letter as random event that might occur without triggering it via commons console</acat.randomeventallowed.description>
 </LanguageData>

@@ -11,6 +11,11 @@ namespace Arakos.CallATrader
     public class IncidentWorker_OrbitalTraderVisitingOffer : IncidentWorker
     {
 
+        protected override bool CanFireNowSub(IncidentParms parms)
+        {
+            return parms.forced || CallATrader.settings.randomEventAllowed;
+        }
+
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
             Find.LetterStack.ReceiveLetter(new ChoiceLetter_SelectTrader((Map)parms.target));
