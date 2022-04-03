@@ -5,11 +5,12 @@
 	
 	<!-- Comms console action menu -->
 	<acat.console.label>Call the 'Orbital Traders Hub'</acat.console.label>
-	<acat.job.infomessage>A trading request was send to the 'Orbital Traders Hub'. They will not answer any requests from you for {0} day{1}.</acat.job.infomessage>
+	<acat.console.label.disabled>'Orbital Traders Hub' unreachable for {0}</acat.console.label.disabled>
+	<acat.job.infomessage>A trading request was send to the 'Orbital Traders Hub'. They will not answer any requests from you for {0}.</acat.job.infomessage>
 	
 	<!-- Trader offer letter -->
 	<acat.traderletter.label>Offer from 'Orbital Traders Hub'</acat.traderletter.label>
-	<acat.traderletter.text>The 'Orbital Traders Hub' offers to send an orbital trader ship to your location in '{0}' days.\n\nThey request an upfront fee of '{1}' silver to cover their costs for adjusting the ships route.\n\nThe silver will be teleported to the hub immediately - if you accept.\n</acat.traderletter.text>
+	<acat.traderletter.text>The 'Orbital Traders Hub' offers to send an orbital trader ship to your location in {0}.\n\nThey request an upfront fee of '{1}' silver to cover their costs for adjusting the ships route.\n\nThe silver will be teleported to the hub immediately - if you accept.\n</acat.traderletter.text>
 	<acat.traderletter.accept>Request {0}</acat.traderletter.accept>
 	<acat.traderletter.refuse>Decline the offer</acat.traderletter.refuse>
 	<acat.traderletter.disabled>{0}/{1} silver</acat.traderletter.disabled>

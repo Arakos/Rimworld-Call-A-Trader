@@ -28,11 +28,11 @@ namespace Arakos.CallATrader
 
             this.map = map;
             this.fee = (CallATrader.settings.costRange.RandomInRange / 10) * 10;
-            this.delay = CallATrader.settings.delayRange.RandomInRange;
+            this.delay = CallATrader.settings.delayRange.RandomInRange * GenDate.TicksPerDay;
             this.canSelectTraderType = CallATrader.settings.canSelectTraderType;
 
             base.label = (Constants.MOD_PREFIX + TRADER_LETTER + "label").Translate();
-            base.text = (Constants.MOD_PREFIX + TRADER_LETTER + "text").Translate(delay, fee);
+            base.text = (Constants.MOD_PREFIX + TRADER_LETTER + "text").Translate(GenDate.ToStringTicksToPeriod(delay, allowSeconds: false, canUseDecimals: false), fee);
         }
 
         public override void ExposeData()
@@ -75,7 +75,7 @@ namespace Arakos.CallATrader
                                     target = map,
                                     traderKind = traderKindDef
                                 }),
-                            Find.TickManager.TicksGame + (delay * 60000)));
+                            Find.TickManager.TicksGame + delay));
 
                         TradeUtility.LaunchSilver(map, fee);
                         Messages.Message((Constants.MOD_PREFIX + TRADER_LETTER + "payed").Translate(fee), null, MessageTypeDefOf.NeutralEvent, true);

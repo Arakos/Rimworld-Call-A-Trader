@@ -47,13 +47,16 @@ namespace Arakos.CallATrader
                     }
 
                     // must be done this way because the impl of disabled in FloatMenuOption is retarded
-                    if(CallATrader.state.traderRequestActionDisabledUntil > Find.TickManager.TicksAbs)
+                    int ticksDisabled = CallATrader.state.traderRequestActionDisabledUntil - Find.TickManager.TicksAbs;
+                    if (ticksDisabled > 0)
                     {
                         callTraderOption.Disabled = true;
+                        callTraderOption.Label = (Constants.MOD_PREFIX + ".console.label.disabled").Translate(GenDate.ToStringTicksToPeriod(ticksDisabled, shortForm: false));
                     }
                     else
                     {
                         callTraderOption.Disabled = false;
+                        callTraderOption.Label = (Constants.MOD_PREFIX + ".console.label").Translate();
                         callTraderOption.action = () => pawn.jobs.TryTakeOrderedJob(JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed(Constants.JOB_DEF_NAME, true), thing), JobTag.MiscWork, true);
                     }
                     return;

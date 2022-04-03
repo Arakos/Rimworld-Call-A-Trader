@@ -51,8 +51,8 @@ namespace Arakos.CallATrader
                 }
 
                 // call finished so disable the action to call again for a set amount of time
-                int cooldown = CallATrader.settings.cooldownRange.RandomInRange;
-                CallATrader.state.traderRequestActionDisabledUntil = Find.TickManager.TicksAbs + (cooldown * 60000);
+                int cooldown = CallATrader.settings.cooldownRange.RandomInRange * GenDate.TicksPerDay;
+                CallATrader.state.traderRequestActionDisabledUntil = Find.TickManager.TicksAbs + cooldown;
 
                 // queue the 'trader visiting offer' incident
                 Find.Storyteller.incidentQueue.Add(
@@ -62,7 +62,8 @@ namespace Arakos.CallATrader
                     );
 
                 // send info message so player knowns something is about to happen
-                Messages.Message((Constants.MOD_PREFIX + ".job.infomessage").Translate(cooldown, cooldown == 1 ? "" : "s"), commsConsole, MessageTypeDefOf.NeutralEvent, false);
+                Messages.Message((Constants.MOD_PREFIX + ".job.infomessage").Translate(GenDate.ToStringTicksToPeriod(cooldown, allowSeconds: false, canUseDecimals: false)),
+                    commsConsole, MessageTypeDefOf.NeutralEvent, false);
                 };
 
             yield return Toils_Reserve.Reserve(TargetIndex.A);
