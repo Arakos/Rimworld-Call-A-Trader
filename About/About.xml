@@ -22,10 +22,12 @@
 		<li>brrainz.harmony</li>
 	</loadAfter>
 	<description>
-This mod enables your pawns to request an orbital trader from the 'Orbital Traders Hub'.
+This mod enables your pawns to request an orbital trader from the 'Orbital Traders Hub' using the commons console.
 
-* Adds the option call an orbital trader using the commons console.
+* Adds the option to call an orbital trader using the commons console.
+
 * Adds an incident event where you can choose if you want to receive an orbital trader in the near future.
+
 * Costs, Delay and Cooldown for the call-action are configurable.
 
 
