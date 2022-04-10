@@ -25,8 +25,8 @@ namespace Arakos.CallATrader
         public CallATrader(ModContentPack pack) : base(pack)
         {
             instance = this;
-            var harmony = new HarmonyLib.Harmony("arakos.callatrader.acat.callatrader");
-            harmony.PatchAll(Assembly.GetExecutingAssembly());
+            new HarmonyLib.Harmony("arakos.callatrader.acat.callatrader")
+                .PatchAll(Assembly.GetExecutingAssembly());
         }
 
         public override void DoSettingsWindowContents(Rect inRect)

@@ -11,27 +11,11 @@ using Verse.AI;
 namespace Arakos.CallATrader
 {
 
-    [StaticConstructorOnStartup]
-    class Main
-    {
-
-        static Main()
-        {
-            var harmony = new Harmony("com.github.arakos.hdk_callatrader");
-            harmony.PatchAll(Assembly.GetExecutingAssembly());
-
-            //if (MP.enabled)
-            //{
-            //    MP.RegisterAll(Assembly.GetExecutingAssembly());
-            //}
-        }
-    }
-
     [HarmonyPatch(typeof(FloatMenuMakerMap), "AddHumanlikeOrders")]
     [HarmonyPatch(new Type[] { typeof(Vector3), typeof(Pawn), typeof(List<FloatMenuOption>) })]
     public static class FloatMenuMakerMap_AddHumanLikeOrders_Postfix
     {
-        private static readonly FloatMenuOption callTraderOption = new FloatMenuOption((Constants.MOD_PREFIX + ".console.label").Translate(), null, Constants.ORBITAL_TRADER_HUB_ICON, Color.white, MenuOptionPriority.Default);
+        private static readonly FloatMenuOption callTraderOption = new FloatMenuOption((Constants.MOD_PREFIX + ".console.label").Translate(), null, Textures.ORBITAL_TRADER_HUB_ICON, Color.white, MenuOptionPriority.Default);
 
         // care: this method gets invoked permanently while the UI window is open
         [HarmonyPostfix]

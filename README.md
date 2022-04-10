@@ -1,4 +1,4 @@
-# Rimworld: Call-A-Trader (Mod)
+# Rimworld: Call-A-Trader <img src="Textures/orbital_trader_hub_icon.png"/>
 
 <img src="About/preview.png" alt="Call-A-Trader Mod Preview Image" />
 

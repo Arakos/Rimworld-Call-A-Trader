@@ -30,4 +30,4 @@ REM Possibly no value set
 if not defined STEAM_INSTALL_DIR (echo Steam.exe not found! & exit /b 1)
 
 REM start rimworld
-echo "%STEAM_INSTALL_DIR%\Steam.exe" -applaunch 294100
+"%STEAM_INSTALL_DIR%\Steam.exe" -applaunch 294100
