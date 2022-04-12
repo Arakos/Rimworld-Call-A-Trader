@@ -77,8 +77,11 @@ namespace Arakos.CallATrader
                                 }),
                             Find.TickManager.TicksGame + delay));
 
-                        TradeUtility.LaunchSilver(map, fee);
-                        Messages.Message((Constants.MOD_PREFIX + TRADER_LETTER + "payed").Translate(fee), null, MessageTypeDefOf.NeutralEvent, true);
+                        if (fee > 0)
+                        {
+                            TradeUtility.LaunchSilver(map, fee);
+                            Messages.Message((Constants.MOD_PREFIX + TRADER_LETTER + "payed").Translate(fee), null, MessageTypeDefOf.NeutralEvent, true);
+                        }
 
                         Find.LetterStack.RemoveLetter(this);
                     };
