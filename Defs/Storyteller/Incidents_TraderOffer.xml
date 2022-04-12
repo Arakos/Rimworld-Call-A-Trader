@@ -9,7 +9,7 @@
     </targetTags>
     <workerClass>Arakos.CallATrader.IncidentWorker_OrbitalTraderVisitingOffer</workerClass>
     <category>Misc</category>
-    <baseChance>3</baseChance>
+    <baseChance>1.5</baseChance>
     <requireColonistsPresent>True</requireColonistsPresent>
   </IncidentDef>
 
