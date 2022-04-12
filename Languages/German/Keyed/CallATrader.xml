@@ -4,27 +4,27 @@
 	<acat.modname>Call A Trader</acat.modname>
 	
 	<!-- Comms console action menu -->
-	<acat.console.label>Kontaktiere die 'Fliegenden Hausierer™'</acat.console.label>
-	<acat.console.label.disabled>Die 'Fliegenden Hausierer™' sind für {0} unerreichbar</acat.console.label.disabled>
-	<acat.job.infomessage>Es wurde eine Handelsanfrage an die 'Fliegenden Hausierer™' gestellt. Sie werden für {0} keine weiteren Anfragen akzeptieren.</acat.job.infomessage>
+	<acat.console.label>Kontaktiere die Fliegenden Hausierer</acat.console.label>
+	<acat.console.label.disabled>Die Fliegenden Hausierer sind für {0} unerreichbar</acat.console.label.disabled>
+	<acat.job.infomessage>Es wurde eine Handelsanfrage an die Fliegenden Hausierer gestellt. Sie werden für {0} keine weiteren Anfragen akzeptieren.</acat.job.infomessage>
 	
 	<!-- Trader offer letter -->
-	<acat.traderletter.label>Angebot der 'Fliegenden Hausierer™'</acat.traderletter.label>
-	<acat.traderletter.text>Die 'Fliegenden Hausierer™' bieten dir an eines ihrer Schiffe zu deiner Kolonie zu senden. Dies wird {0} dauern.\n\nSie fordern allerdings eine Sofortzahlung von '{1}' Silber um die Kosten der Routenanpassung zu decken.\n\nBei Angebotsannahme wird diese Summe sofort zur Zentrale der 'Fliegenden Hausierer™' teleportiert.\n</acat.traderletter.text>
+	<acat.traderletter.label>Angebot der Fliegenden Hausierer</acat.traderletter.label>
+	<acat.traderletter.text>Die Fliegenden Hausierer bieten dir an eines ihrer Schiffe zu deiner Kolonie zu senden. Dies wird {0} dauern.\n\nSie fordern allerdings eine Sofortzahlung von {1} Silber um die Kosten der Routenanpassung zu decken.\n\nBei Angebotsannahme wird diese Summe sofort zur Zentrale der Fliegenden Hausierer teleportiert.\n</acat.traderletter.text>
 	<acat.traderletter.accept>Frage {0} an</acat.traderletter.accept>
 	<acat.traderletter.refuse>Angebot ablehnen</acat.traderletter.refuse>
 	<acat.traderletter.disabled>{0}/{1} Silber</acat.traderletter.disabled>
-	<acat.traderletter.payed>Die Zahlung von {0} Silber wurde zur Zentrale der 'Fliegenden Hausierer™' teleportiert.</acat.traderletter.payed>
+	<acat.traderletter.payed>Die Zahlung von {0} Silber wurde zur Zentrale der Fliegenden Hausierer teleportiert.</acat.traderletter.payed>
 
 	<!-- Mod options menu -->
 	<acat.costsrange>Kosten (Silber)</acat.costsrange>
-	<acat.costsrange.description>Spannweite der Kosten, die die 'Fliegenden Hausierer™' für ihren Service einfordern werden</acat.costsrange.description>
+	<acat.costsrange.description>Spannweite der Kosten, die die Fliegenden Hausierer für ihren Service einfordern werden</acat.costsrange.description>
 	<acat.delayrange>Verzögerung (Tage)</acat.delayrange>
-	<acat.delayrange.description>Spannweite der Verzögerung die der Service der 'Fliegenden Hausierer™' haben kann</acat.delayrange.description>
+	<acat.delayrange.description>Spannweite der Verzögerung die der Service der Fliegenden Hausierer haben kann</acat.delayrange.description>
 	<acat.cooldownrange>Abklingzeit (Tage)</acat.cooldownrange>
-	<acat.cooldownrange.description>Spannweite der Abklingzeit für Anfragen an die 'Fliegenden Hausierer™' </acat.cooldownrange.description>
+	<acat.cooldownrange.description>Spannweite der Abklingzeit für Anfragen an die Fliegenden Hausierer </acat.cooldownrange.description>
 	<acat.canselectkind>Händlertyp frei wählbar</acat.canselectkind>
 	<acat.canselectkind.description>Legt fest ob eine Auswahl aller oder nur ein zufälliger Händlertyp im Angebot ausgewählt werden kann</acat.canselectkind.description>
-	<acat.randomeventallowed>'Fliegenden Hausierer™'-Zwischenfall aktivieren</acat.randomeventallowed>
-	<acat.randomeventallowed.description>Aktiviert den "Angebot der 'Fliegender Hausierer™'" Zwischenfall als Zufallsereignis, dass auch ohne getätigte Anfrage an der Funkzentrale auftreten kann</acat.randomeventallowed.description>
+	<acat.randomeventallowed>Fliegenden Hausierer-Zwischenfall aktivieren</acat.randomeventallowed>
+	<acat.randomeventallowed.description>Aktiviert den "Angebot der Fliegenden Hausierer" Zwischenfall als Zufallsereignis, dass auch ohne getätigte Anfrage an der Funkzentrale auftreten kann</acat.randomeventallowed.description>
 </LanguageData>
