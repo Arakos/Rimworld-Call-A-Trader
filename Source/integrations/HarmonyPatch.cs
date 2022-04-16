@@ -53,7 +53,8 @@ namespace Arakos.CallATrader
             {
                 callTraderOption.Disabled = false;
                 callTraderOption.Label = (Constants.MOD_PREFIX + ".console.label").Translate();
-                callTraderOption.action = () => negotiator.jobs.TryTakeOrderedJob(JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed(Constants.JOB_DEF_NAME, true), console), JobTag.MiscWork, true);
+                callTraderOption.action = () => negotiator.jobs.TryTakeOrderedJob(JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed(Constants.JOB_DEF_NAME, true), console), JobTag.MiscWork);
+                FloatMenuUtility.DecoratePrioritizedTask(callTraderOption, negotiator, console);
             }
             return callTraderOption;
         }

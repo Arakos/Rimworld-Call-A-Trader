@@ -28,7 +28,9 @@ namespace Arakos.CallATrader
         protected override IEnumerable<Toil> MakeNewToils()
         {
             Building_CommsConsole commsConsole = this.job.targetA.Thing as Building_CommsConsole;
-            this.FailOnDespawnedNullOrForbidden(TargetIndex.A);
+            this.FailOnDespawnedNullOrForbidden(TargetIndex.A)
+                .FailOn(() => !commsConsole.CanUseCommsNow)
+                .FailOn(() => CallATrader.state.traderRequestActionDisabledUntil > Find.TickManager.TicksAbs);
 
             Toil talkToTrader = new Toil
             {
@@ -36,14 +38,10 @@ namespace Arakos.CallATrader
                 defaultCompleteMode = ToilCompleteMode.Never
             };
 
-            talkToTrader.AddFailCondition(() => !commsConsole.GetComp<CompPowerTrader>().PowerOn);
-            talkToTrader.AddFailCondition(() => CallATrader.state.traderRequestActionDisabledUntil > Find.TickManager.TicksAbs);
-            talkToTrader.FailOnDespawnedNullOrForbidden(TargetIndex.A);
-
             talkToTrader.WithProgressBar(TargetIndex.A, () => (float)this.workDone / (float)talkToTrader.defaultDuration);
-
             talkToTrader.AddEndCondition(() => this.workDone < talkToTrader.defaultDuration ? JobCondition.Ongoing : JobCondition.Succeeded);
-            talkToTrader.tickAction = () => {
+            talkToTrader.tickAction = () => 
+            {
                 this.workDone++;
                 if (this.workDone < talkToTrader.defaultDuration)
                 {
@@ -62,13 +60,12 @@ namespace Arakos.CallATrader
                     );
 
                 // send info message so player knowns something is about to happen
-                Messages.Message((Constants.MOD_PREFIX + ".job.infomessage").Translate(GenDate.ToStringTicksToPeriod(cooldown, allowSeconds: false, canUseDecimals: false)),
+                Messages.Message((Constants.MOD_PREFIX + ".job.infomessage.success").Translate(GenDate.ToStringTicksToPeriod(cooldown, allowSeconds: false, canUseDecimals: false)),
                     commsConsole, MessageTypeDefOf.NeutralEvent, false);
-                };
+            };
 
             yield return Toils_Reserve.Reserve(TargetIndex.A);
-            yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.InteractionCell)
-                .FailOnDespawnedNullOrForbidden(TargetIndex.A);
+            yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.InteractionCell);
             yield return talkToTrader;
             yield return Toils_Reserve.Release(TargetIndex.A);
             yield break;
