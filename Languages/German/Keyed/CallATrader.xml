@@ -6,7 +6,8 @@
 	<!-- Comms console action menu -->
 	<acat.console.label>Kontaktiere die Fliegenden Hausierer</acat.console.label>
 	<acat.console.label.disabled>Die Fliegenden Hausierer sind für {0} unerreichbar</acat.console.label.disabled>
-	<acat.job.infomessage>Es wurde eine Handelsanfrage an die Fliegenden Hausierer gestellt. Sie werden für {0} keine weiteren Anfragen akzeptieren.</acat.job.infomessage>
+	
+	<acat.job.infomessage.success>Es wurde eine Handelsanfrage an die Fliegenden Hausierer gestellt. Sie werden für {0} keine weiteren Anfragen akzeptieren.</acat.job.infomessage.success>
 	
 	<!-- Trader offer letter -->
 	<acat.traderletter.label>Angebot der Fliegenden Hausierer</acat.traderletter.label>
@@ -14,6 +15,7 @@
 	<acat.traderletter.accept>Frage {0} an</acat.traderletter.accept>
 	<acat.traderletter.refuse>Angebot ablehnen</acat.traderletter.refuse>
 	<acat.traderletter.disabled>{0}/{1} Silber</acat.traderletter.disabled>
+	<acat.traderletter.toomanytraders>Der angeforderte Händler verweigert die Anreise, da aktuell zu viele Handelsshiffe in der Region sind.</acat.traderletter.toomanytraders>
 	<acat.traderletter.payed>Die Zahlung von {0} Silber wurde zur Zentrale der Fliegenden Hausierer teleportiert.</acat.traderletter.payed>
 
 	<!-- Mod options menu -->

@@ -68,6 +68,16 @@ namespace Arakos.CallATrader
                     DiaOption payForTrader = new DiaOption((Constants.MOD_PREFIX + TRADER_LETTER + "accept").Translate(traderKindDef.label, fee));
                     payForTrader.action = () =>
                     {
+                        Find.LetterStack.RemoveLetter(this);
+
+                        // hardcoded limit of 5 in the basegame
+                        if (this.map.passingShipManager.passingShips.Count >= 5)
+                        {
+                            // send info message so player knowns too many ships present already
+                            Messages.Message((Constants.MOD_PREFIX + TRADER_LETTER + "toomanytraders").Translate(), null, MessageTypeDefOf.NeutralEvent, true);
+                            return;
+                        }
+
                         Find.Storyteller.incidentQueue.Add(new QueuedIncident(
                             new FiringIncident(IncidentDefOf.OrbitalTraderArrival, null,
                                 new IncidentParms()
@@ -83,7 +93,6 @@ namespace Arakos.CallATrader
                             Messages.Message((Constants.MOD_PREFIX + TRADER_LETTER + "payed").Translate(fee), null, MessageTypeDefOf.NeutralEvent, true);
                         }
 
-                        Find.LetterStack.RemoveLetter(this);
                     };
                     int availableSilver = TradeUtility.AllLaunchableThingsForTrade(map)
                         .Where(t => t.def == ThingDefOf.Silver)

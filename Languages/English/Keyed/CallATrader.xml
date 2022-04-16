@@ -6,7 +6,8 @@
 	<!-- Comms console action menu -->
 	<acat.console.label>Call the Orbital Traders Hub</acat.console.label>
 	<acat.console.label.disabled>Orbital Traders Hub unreachable for {0}</acat.console.label.disabled>
-	<acat.job.infomessage>A trading request was send to the Orbital Traders Hub. They will not answer any requests from you for {0}.</acat.job.infomessage>
+	
+	<acat.job.infomessage.success>A trading request was send to the Orbital Traders Hub. They will not answer any requests from you for {0}.</acat.job.infomessage.success>
 	
 	<!-- Trader offer letter -->
 	<acat.traderletter.label>Offer from Orbital Traders Hub</acat.traderletter.label>
@@ -14,6 +15,7 @@
 	<acat.traderletter.accept>Request {0}</acat.traderletter.accept>
 	<acat.traderletter.refuse>Decline the offer</acat.traderletter.refuse>
 	<acat.traderletter.disabled>{0}/{1} silver</acat.traderletter.disabled>
+	<acat.traderletter.toomanytraders>The requested trader refuses to show up because there are too many tradeships at your location already.</acat.traderletter.toomanytraders>
 	<acat.traderletter.payed>The fee of {0} Silver was yeeted to the Orbital Traders Hub</acat.traderletter.payed>
 
 	<!-- Mod options menu -->
