@@ -90,6 +90,7 @@
     <Compile Include="CallATrader.cs" />
     <Compile Include="rimworld\ChoiceLetter_SelectTrader.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="rimworld\ICommunicable_OrbitalTradersHub.cs" />
     <Compile Include="rimworld\IncidentWorker_OrbitalTraderVisitingOffer.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="integrations\HarmonyPatch.cs" />
