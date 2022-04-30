@@ -1,4 +1,5 @@
-﻿using RimWorld;
+﻿using HarmonyLib;
+using RimWorld;
 using System.Reflection;
 using UnityEngine;
 using Verse;
@@ -25,8 +26,9 @@ namespace Arakos.CallATrader
         public CallATrader(ModContentPack pack) : base(pack)
         {
             instance = this;
-            new HarmonyLib.Harmony("arakos.callatrader.acat.callatrader")
-                .PatchAll(Assembly.GetExecutingAssembly());
+            Harmony harmony = new HarmonyLib.Harmony("arakos.callatrader.acat.callatrader");
+            harmony.PatchAll(Assembly.GetExecutingAssembly());
+            TraderShips_Patch.TryPatch(harmony);
         }
 
         public override void DoSettingsWindowContents(Rect inRect)
