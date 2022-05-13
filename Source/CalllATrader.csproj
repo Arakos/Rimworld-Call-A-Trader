@@ -34,6 +34,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="0MultiplayerAPI">
+      <HintPath>dependencies\0MultiplayerAPI.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -89,6 +92,7 @@
   <ItemGroup>
     <Compile Include="CallATrader.cs" />
     <Compile Include="integrations\TraderShips_Patch.cs" />
+    <Compile Include="integrations\MultiplayerCompat.cs" />
     <Compile Include="rimworld\ChoiceLetter_SelectTrader.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="rimworld\ICommunicable_OrbitalTradersHub.cs" />

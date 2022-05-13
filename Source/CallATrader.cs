@@ -3,6 +3,8 @@ using RimWorld;
 using System.Reflection;
 using UnityEngine;
 using Verse;
+using Multiplayer.API;
+
 
 namespace Arakos.CallATrader
 {
@@ -26,9 +28,15 @@ namespace Arakos.CallATrader
         public CallATrader(ModContentPack pack) : base(pack)
         {
             instance = this;
+			
             Harmony harmony = new HarmonyLib.Harmony("arakos.callatrader.acat.callatrader");
             harmony.PatchAll(Assembly.GetExecutingAssembly());
             TraderShips_Patch.TryPatch(harmony);
+
+            if (MP.enabled)
+            {
+                MP.RegisterAll();
+            }
         }
 
         public override void DoSettingsWindowContents(Rect inRect)

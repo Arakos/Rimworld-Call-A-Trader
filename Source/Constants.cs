@@ -26,7 +26,7 @@ namespace Arakos.CallATrader
         internal static readonly string INCIDENT_DEF_NAME = MOD_PREFIX + "_OrbitalTraderVisitingOffer";
     }
 
-    [StaticConstructorOnStartup()]
+    [StaticConstructorOnStartup]
     public static class Textures
     {
         public static readonly Texture2D ORBITAL_TRADER_HUB_ICON = ContentFinder<Texture2D>.Get("orbital_trader_hub_icon", true);
