@@ -13,12 +13,13 @@ namespace Arakos.CallATrader
 
         protected override bool CanFireNowSub(IncidentParms parms)
         {
-            return parms.forced || CallATrader.settings.randomEventAllowed;
+            return parms.forced || CallATrader.Settings.randomEventAllowed;
         }
 
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
-            Find.LetterStack.ReceiveLetter(new ChoiceLetter_SelectTrader((Map)parms.target));
+            TraderLetterConfig config = new TraderLetterConfig((Map)parms.target);
+            Find.LetterStack.ReceiveLetter(new ChoiceLetter_SelectTrader(config));
             return true;
         }
     }

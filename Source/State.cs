@@ -12,10 +12,10 @@ namespace Arakos.CallATrader
         private static CallATraderState instance;
 
         private int _traderRequestActionDisabledUntil = 0;
-        public int traderRequestActionDisabledUntil
+        public int TraderRequestActionDisabledUntil
         {
             get {
-                int cooldownMax = Find.TickManager.TicksAbs + (CallATrader.settings.cooldownRange.max * 60000);
+                int cooldownMax = Find.TickManager.TicksAbs + (CallATrader.Settings.cooldownRange.max * 60000);
                 if (_traderRequestActionDisabledUntil >= cooldownMax)
                 {
                     _traderRequestActionDisabledUntil = cooldownMax;
@@ -28,11 +28,11 @@ namespace Arakos.CallATrader
             }
         }
 
-        public CallATraderState(Game game)
+        public CallATraderState(Game _)
         {
             instance = this;
         }
-        public static CallATraderState getInstance()
+        public static CallATraderState GetInstance()
         {
             return instance;
         }

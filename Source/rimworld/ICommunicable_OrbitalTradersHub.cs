@@ -23,7 +23,7 @@ namespace Arakos.CallATrader
             cachedConsole = console;
 
             // get ticks the call trader action is disabled for
-            int disabledForTicks = CallATrader.state.traderRequestActionDisabledUntil - Find.TickManager.TicksAbs;
+            int disabledForTicks = CallATrader.State.TraderRequestActionDisabledUntil - Find.TickManager.TicksAbs;
 
             // must be done this way because the impl of disabled in FloatMenuOption is retarded
             if (disabledForTicks > 0)

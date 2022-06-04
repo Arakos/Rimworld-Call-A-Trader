@@ -1,18 +1,21 @@
 ﻿using RimWorld;
-using UnityEngine;
 using System.Collections.Generic;
 using Verse;
 using Verse.AI;
-using System;
-using RimWorld.QuestGen;
+using Multiplayer.API;
 
 namespace Arakos.CallATrader
 {
 
-    public class JobDriver_CallATrader : JobDriver
+    public class JobDriver_CallATrader : JobDriver, ISynchronizable
     {
 
         int workDone = 0;
+
+        public void Sync(SyncWorker sync)
+        {
+            sync.Bind(ref this.workDone);
+        }
 
         public override void ExposeData()
         {
@@ -30,7 +33,7 @@ namespace Arakos.CallATrader
             Building_CommsConsole commsConsole = this.job.targetA.Thing as Building_CommsConsole;
             this.FailOnDespawnedNullOrForbidden(TargetIndex.A)
                 .FailOn(() => !commsConsole.CanUseCommsNow)
-                .FailOn(() => CallATrader.state.traderRequestActionDisabledUntil > Find.TickManager.TicksAbs);
+                .FailOn(() => CallATrader.State.TraderRequestActionDisabledUntil > Find.TickManager.TicksAbs);
 
             Toil talkToTrader = new Toil
             {
@@ -49,8 +52,8 @@ namespace Arakos.CallATrader
                 }
 
                 // call finished so disable the action to call again for a set amount of time
-                int cooldown = CallATrader.settings.cooldownRange.RandomInRange * GenDate.TicksPerDay;
-                CallATrader.state.traderRequestActionDisabledUntil = Find.TickManager.TicksAbs + cooldown;
+                int cooldown = CallATrader.Settings.cooldownRange.RandomInRange * GenDate.TicksPerDay;
+                CallATrader.State.TraderRequestActionDisabledUntil = Find.TickManager.TicksAbs + cooldown;
 
                 // queue the 'trader visiting offer' incident
                 Find.Storyteller.incidentQueue.Add(
@@ -70,5 +73,6 @@ namespace Arakos.CallATrader
             yield return Toils_Reserve.Release(TargetIndex.A);
             yield break;
         }
+
     }
 }

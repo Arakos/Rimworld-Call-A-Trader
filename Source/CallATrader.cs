@@ -14,14 +14,14 @@ namespace Arakos.CallATrader
 
         private static CallATrader instance;
 
-        public static CallATraderSettings settings
+        public static CallATraderSettings Settings
         {
             get { return instance.GetSettings<CallATraderSettings>(); }
             private set { }
         }
-        public static CallATraderState state
+        public static CallATraderState State
         {
-            get { return CallATraderState.getInstance(); }
+            get { return CallATraderState.GetInstance(); }
             private set { }
         }
 
@@ -41,7 +41,7 @@ namespace Arakos.CallATrader
 
         public override void DoSettingsWindowContents(Rect inRect)
         {
-            settings.DoSettingsWindowContents(inRect);
+            Settings.DoSettingsWindowContents(inRect);
             base.DoSettingsWindowContents(inRect);
         }
 

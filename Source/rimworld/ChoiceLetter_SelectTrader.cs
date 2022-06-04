@@ -9,39 +9,26 @@ namespace Arakos.CallATrader
     {
         static readonly string TRADER_LETTER = ".traderletter.";
 
-        private Map map;
-
-        private int fee;
-
-        private int delay;
-
-        private bool canSelectTraderType;
+        private TraderLetterConfig config;
 
         public ChoiceLetter_SelectTrader()
         {
         }
 
-        public ChoiceLetter_SelectTrader(Map map)
+        public ChoiceLetter_SelectTrader(TraderLetterConfig config)
         {
+            this.config = config;
+
             base.def = DefDatabase<LetterDef>.GetNamed(Constants.LETTER_DEF_NAME);
             base.ID = Find.UniqueIDsManager.GetNextLetterID();
-
-            this.map = map;
-            this.fee = (CallATrader.settings.costRange.RandomInRange / 10) * 10;
-            this.delay = CallATrader.settings.delayRange.RandomInRange * GenDate.TicksPerDay;
-            this.canSelectTraderType = CallATrader.settings.canSelectTraderType;
-
             base.label = (Constants.MOD_PREFIX + TRADER_LETTER + "label").Translate();
-            base.text = (Constants.MOD_PREFIX + TRADER_LETTER + "text").Translate(GenDate.ToStringTicksToPeriod(delay, allowSeconds: false, canUseDecimals: false), fee);
+            base.text = (Constants.MOD_PREFIX + TRADER_LETTER + "text").Translate(GenDate.ToStringTicksToPeriod(config.delay, allowSeconds: false, canUseDecimals: false), config.fee);
         }
 
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_References.Look(ref map, "map");
-            Scribe_Values.Look(ref fee, "fee");
-            Scribe_Values.Look(ref delay, "delay");
-            Scribe_Values.Look(ref canSelectTraderType, "canSelectTraderType");
+            Scribe_Values.Look(ref config, "config");
         }
 
 
@@ -55,51 +42,45 @@ namespace Arakos.CallATrader
                     yield break;
                 }
 
-                List<TraderKindDef> orbitalTraderDefs = DefDatabase<TraderKindDef>.AllDefsListForReading.FindAll(def => def.orbital);
-
-                if (!this.canSelectTraderType)
+                foreach (TraderKindDef traderKindDef in config.orbitalTraderDefs)
                 {
-                    TraderKindDef tmp = orbitalTraderDefs.RandomElement();
-                    orbitalTraderDefs.RemoveAll(def => def != tmp);
-                }
-
-                foreach (TraderKindDef traderKindDef in orbitalTraderDefs)
-                {
-                    DiaOption payForTrader = new DiaOption((Constants.MOD_PREFIX + TRADER_LETTER + "accept").Translate(traderKindDef.label, fee));
-                    payForTrader.action = () =>
+                    DiaOption payForTrader = new DiaOption((Constants.MOD_PREFIX + TRADER_LETTER + "accept").Translate(traderKindDef.label, config.fee))
                     {
-                        Find.LetterStack.RemoveLetter(this);
+                        action = () =>
+                        {
+                            Find.LetterStack.RemoveLetter(this);
 
                         // hardcoded limit of 5 in the basegame
-                        if (this.map.passingShipManager.passingShips.Count >= 5)
-                        {
+                        if (config.map.passingShipManager.passingShips.Count >= 5)
+                            {
                             // send info message so player knowns too many ships present already
                             Messages.Message((Constants.MOD_PREFIX + TRADER_LETTER + "toomanytraders").Translate(), null, MessageTypeDefOf.NeutralEvent, true);
-                            return;
+                                return;
+                            }
+
+                            Find.Storyteller.incidentQueue.Add(new QueuedIncident(
+                                new FiringIncident(IncidentDefOf.OrbitalTraderArrival, null,
+                                    new IncidentParms()
+                                    {
+                                        target = config.map,
+                                        traderKind = traderKindDef
+                                    }),
+                                Find.TickManager.TicksGame + config.delay));
+
+                            if (config.fee > 0)
+                            {
+                                TradeUtility.LaunchSilver(config.map, config.fee);
+                                Messages.Message((Constants.MOD_PREFIX + TRADER_LETTER + "payed").Translate(config.fee), null, MessageTypeDefOf.NeutralEvent, true);
+                            }
+
                         }
-
-                        Find.Storyteller.incidentQueue.Add(new QueuedIncident(
-                            new FiringIncident(IncidentDefOf.OrbitalTraderArrival, null,
-                                new IncidentParms()
-                                {
-                                    target = map,
-                                    traderKind = traderKindDef
-                                }),
-                            Find.TickManager.TicksGame + delay));
-
-                        if (fee > 0)
-                        {
-                            TradeUtility.LaunchSilver(map, fee);
-                            Messages.Message((Constants.MOD_PREFIX + TRADER_LETTER + "payed").Translate(fee), null, MessageTypeDefOf.NeutralEvent, true);
-                        }
-
                     };
-                    int availableSilver = TradeUtility.AllLaunchableThingsForTrade(map)
+                    int availableSilver = TradeUtility.AllLaunchableThingsForTrade(config.map)
                         .Where(t => t.def == ThingDefOf.Silver)
                         .Sum(t => t.stackCount);
-                    if (availableSilver < fee)
+                    if (availableSilver < config.fee)
                     {
-                        payForTrader.Disable((Constants.MOD_PREFIX + TRADER_LETTER + "disabled").Translate(availableSilver, fee));
+                        payForTrader.Disable((Constants.MOD_PREFIX + TRADER_LETTER + "disabled").Translate(availableSilver, config.fee));
                     }
                     payForTrader.resolveTree = true;
                     yield return payForTrader;
