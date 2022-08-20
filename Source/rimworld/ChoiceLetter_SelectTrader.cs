@@ -49,23 +49,23 @@ namespace Arakos.CallATrader
         {
             get
             {
+                // letter is opend from letter archive by player just display the default close option
                 if (base.ArchivedOnly)
                 {
                     yield return base.Option_Close;
                     yield break;
                 }
 
-                List<TraderKindDef> orbitalTraderDefs = DefDatabase<TraderKindDef>.AllDefsListForReading.FindAll(def => def.orbital);
+                IList<TraderKindDef> orbitalTraderDefs = DefDatabase<TraderKindDef>.AllDefsListForReading.FindAll(def => def.orbital);
 
                 if (!this.canSelectTraderType)
                 {
-                    TraderKindDef tmp = orbitalTraderDefs.RandomElement();
-                    orbitalTraderDefs.RemoveAll(def => def != tmp);
+                    orbitalTraderDefs = new TraderKindDef[] { orbitalTraderDefs.RandomElement() };
                 }
 
                 foreach (TraderKindDef traderKindDef in orbitalTraderDefs)
                 {
-                    DiaOption payForTrader = new DiaOption((Constants.MOD_PREFIX + TRADER_LETTER + "accept").Translate(traderKindDef.label, fee));
+                    DiaOption payForTrader = CreateDiaOption((Constants.MOD_PREFIX + TRADER_LETTER + "accept").Translate(traderKindDef.label, fee));
                     payForTrader.action = () =>
                     {
                         Find.LetterStack.RemoveLetter(this);
@@ -94,6 +94,7 @@ namespace Arakos.CallATrader
                         }
 
                     };
+
                     int availableSilver = TradeUtility.AllLaunchableThingsForTrade(map)
                         .Where(t => t.def == ThingDefOf.Silver)
                         .Sum(t => t.stackCount);
@@ -101,18 +102,23 @@ namespace Arakos.CallATrader
                     {
                         payForTrader.Disable((Constants.MOD_PREFIX + TRADER_LETTER + "disabled").Translate(availableSilver, fee));
                     }
-                    payForTrader.resolveTree = true;
+
                     yield return payForTrader;
                 }
 
-                yield return new DiaOption((Constants.MOD_PREFIX + TRADER_LETTER + "refuse").Translate())
-                {
-                    action = () => Find.LetterStack.RemoveLetter(this),
-                    resolveTree = true
-                };
-
+                yield return CreateDiaOption((Constants.MOD_PREFIX + TRADER_LETTER + "refuse").Translate());
                 yield break;
             }
         }
+
+        private DiaOption CreateDiaOption(TaggedString label)
+        {
+            return new DiaOption(label)
+            {
+                action = () => Find.LetterStack.RemoveLetter(this),
+                resolveTree = true
+            };
+        }
+
     }
 }

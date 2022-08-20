@@ -9,7 +9,6 @@ namespace Arakos.CallATrader
 {
     public static class TraderShips_Patch
     {
-        private static Assembly assembly_TraderShips = null;
         private static Type type_CompShip = null;
         private static MethodInfo method_CompShip_GenerateInternalTradeShip = null;
         private static MethodInfo method_IncidentWorkerTraderShip_LandShip = null;
@@ -17,6 +16,8 @@ namespace Arakos.CallATrader
         public static void TryPatch(Harmony harmony)
         {
             ModContentPack mod_TraderShips = null;
+            Assembly assembly_TraderShips = null;
+
             foreach (ModContentPack mod in LoadedModManager.RunningMods)
             {
                 foreach (Assembly assembly in mod.assemblies.loadedAssemblies)
@@ -35,11 +36,14 @@ namespace Arakos.CallATrader
                 try
                 {
                     type_CompShip = assembly_TraderShips.GetType("TraderShips.CompShip", true);
-                    method_CompShip_GenerateInternalTradeShip = type_CompShip.GetMethod("GenerateInternalTradeShip") ?? throw new Exception("Method TraderShips.CompShip.GenerateInternalTradeShip not found");
-                    method_IncidentWorkerTraderShip_LandShip = assembly_TraderShips.GetType("TraderShips.IncidentWorkerTraderShip").GetMethod("LandShip") ?? throw new Exception("Method TraderShips.IncidentWorkerTraderShip.LandShip not found");
+                    method_CompShip_GenerateInternalTradeShip = type_CompShip.GetMethod("GenerateInternalTradeShip") 
+                        ?? throw new Exception("Method TraderShips.CompShip.GenerateInternalTradeShip not found");
+                    method_IncidentWorkerTraderShip_LandShip = assembly_TraderShips.GetType("TraderShips.IncidentWorkerTraderShip", true).GetMethod("LandShip") 
+                        ?? throw new Exception("Method TraderShips.IncidentWorkerTraderShip.LandShip not found");
 
                     MethodInfo method_TryExecuteWorker = assembly_TraderShips.GetType("TraderShips.IncidentWorkerTraderShip", true)
-                        .GetMethod("TryExecuteWorker", BindingFlags.Instance | BindingFlags.NonPublic, Type.DefaultBinder, new[] { typeof(IncidentParms) }, null) ?? throw new Exception("Method TraderShips.IncidentWorkerTraderShip.TryExecuteWorker not found");
+                        .GetMethod("TryExecuteWorker", BindingFlags.Instance | BindingFlags.NonPublic, Type.DefaultBinder, new[] { typeof(IncidentParms) }, null)
+                        ?? throw new Exception("Method TraderShips.IncidentWorkerTraderShip.TryExecuteWorker not found");
 
                     harmony.Patch(method_TryExecuteWorker, prefix: new HarmonyMethod(typeof(TraderShips_Patch).GetMethod(nameof(TraderShips_Patch.TryExecuteWorker_Patch))));
 
