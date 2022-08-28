@@ -9,15 +9,21 @@
 	
 	<acat.job.infomessage.success>Es wurde eine Handelsanfrage an die Fliegenden Hausierer gestellt. Sie werden für {0} keine weiteren Anfragen akzeptieren.</acat.job.infomessage.success>
 	
+	<!-- Incident refusal (due to game conditions) -->
+	<acat.incident.refusal.label>Ablehnung der Fliegenden Hausierer</acat.incident.refusal.label>
+	<acat.incident.refusal.base>Die Fliegenden Hausierer haben deine Anfrage einen Händler zu schicken abgelehnt.</acat.incident.refusal.base>
+	<acat.incident.refusal.toomanytraders>Dies begründen sie damit, dass bereits zu viele ({0}) Handelsshiffe in deiner Kolonie zugegen sind.</acat.incident.refusal.toomanytraders>
+	<acat.incident.refusal.noorbitaltradersavailable>Dies begründen sie damit, dass sie aktuell aus Gründen keine Handelsshiffe zu deiner Kolonie senden können.</acat.incident.refusal.noorbitaltradersavailable>
+	
 	<!-- Trader offer letter -->
 	<acat.traderletter.label>Angebot der Fliegenden Hausierer</acat.traderletter.label>
 	<acat.traderletter.text>Die Fliegenden Hausierer bieten dir an eines ihrer Schiffe zu deiner Kolonie zu senden. Dies wird {0} dauern.\n\nSie fordern allerdings eine Sofortzahlung von {1} Silber um die Kosten der Routenanpassung zu decken.\n\nBei Angebotsannahme wird diese Summe sofort zur Zentrale der Fliegenden Hausierer teleportiert.\n</acat.traderletter.text>
 	<acat.traderletter.accept>Frage {0} an</acat.traderletter.accept>
 	<acat.traderletter.refuse>Angebot ablehnen</acat.traderletter.refuse>
 	<acat.traderletter.disabled>{0}/{1} Silber</acat.traderletter.disabled>
-	<acat.traderletter.toomanytraders>Der angeforderte Händler verweigert die Anreise, da aktuell zu viele Handelsshiffe in der Region sind.</acat.traderletter.toomanytraders>
+	<acat.traderletter.error.ok>Warte, hier gibts es keine Händler zur Auswahl ...</acat.traderletter.error.ok>
 	<acat.traderletter.payed>Die Zahlung von {0} Silber wurde zur Zentrale der Fliegenden Hausierer teleportiert.</acat.traderletter.payed>
-
+	
 	<!-- Mod options menu -->
 	<acat.costsrange>Kosten (Silber)</acat.costsrange>
 	<acat.costsrange.description>Spannweite der Kosten, die die Fliegenden Hausierer für ihren Service einfordern werden</acat.costsrange.description>

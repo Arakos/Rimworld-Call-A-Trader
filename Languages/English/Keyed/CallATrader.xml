@@ -9,15 +9,21 @@
 	
 	<acat.job.infomessage.success>A trading request was send to the Orbital Traders Hub. They will not answer any requests from you for {0}.</acat.job.infomessage.success>
 	
+	<!-- Incident refusal (due to game conditions) -->
+	<acat.incident.refusal.label>Refusal notice from Orbital Traders Hub</acat.incident.refusal.label>
+	<acat.incident.refusal.base>The Orbital Traders Hub has to decline your trading request.</acat.incident.refusal.base>
+	<acat.incident.refusal.toomanytraders>This is because there are too many ({0}) tradeships at your location already.</acat.incident.refusal.toomanytraders>
+	<acat.incident.refusal.noorbitaltradersavailable>This is because they currently have no traders available near your colony.</acat.incident.refusal.noorbitaltradersavailable>
+	
 	<!-- Trader offer letter -->
 	<acat.traderletter.label>Offer from Orbital Traders Hub</acat.traderletter.label>
 	<acat.traderletter.text>The Orbital Traders Hub offers to send an orbital trader ship to your location in {0}.\n\nThey request an upfront fee of {1} silver to cover their costs for adjusting the ships route.\n\nThe silver will be teleported to the hub immediately - if you accept.\n</acat.traderletter.text>
 	<acat.traderletter.accept>Request {0}</acat.traderletter.accept>
 	<acat.traderletter.refuse>Decline the offer</acat.traderletter.refuse>
 	<acat.traderletter.disabled>{0}/{1} silver</acat.traderletter.disabled>
-	<acat.traderletter.toomanytraders>The requested trader refuses to show up because there are too many tradeships at your location already.</acat.traderletter.toomanytraders>
+	<acat.traderletter.error.ok>Wait there are no traders to select ...</acat.traderletter.error.ok>
 	<acat.traderletter.payed>The fee of {0} Silver was yeeted to the Orbital Traders Hub</acat.traderletter.payed>
-
+	
 	<!-- Mod options menu -->
 	<acat.costsrange>Cost range (silver)</acat.costsrange>
 	<acat.costsrange.description>Range of silver the Orbital Traders Hub will request to send a ship</acat.costsrange.description>

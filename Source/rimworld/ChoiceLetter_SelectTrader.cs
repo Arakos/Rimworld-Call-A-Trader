@@ -1,4 +1,5 @@
 ﻿using RimWorld;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Verse;
@@ -58,6 +59,15 @@ namespace Arakos.CallATrader
 
                 IList<TraderKindDef> orbitalTraderDefs = DefDatabase<TraderKindDef>.AllDefsListForReading.FindAll(def => def.orbital);
 
+                // check game conditions still allow triggering the offer event now to determine if trader selection can continue
+                // if not a refusal notice will be send here as well
+                if (IncidentWorker_OrbitalTraderVisitingOffer.TryExecuteWorkerInternal(
+                    this.map, orbitalTraderDefs, IncidentWorker_OrbitalTraderVisitingOffer.IncidentTrigger.LETTER_EVENT))
+                {
+                    yield return CreateDiaOption((Constants.MOD_PREFIX + TRADER_LETTER + "error.ok").Translate());
+                    yield break;
+                }
+
                 if (!this.canSelectTraderType)
                 {
                     orbitalTraderDefs = new TraderKindDef[] { orbitalTraderDefs.RandomElement() };
@@ -69,14 +79,6 @@ namespace Arakos.CallATrader
                     payForTrader.action = () =>
                     {
                         Find.LetterStack.RemoveLetter(this);
-
-                        // hardcoded limit of 5 in the basegame
-                        if (this.map.passingShipManager.passingShips.Count >= 5)
-                        {
-                            // send info message so player knowns too many ships present already
-                            Messages.Message((Constants.MOD_PREFIX + TRADER_LETTER + "toomanytraders").Translate(), null, MessageTypeDefOf.NeutralEvent, true);
-                            return;
-                        }
 
                         Find.Storyteller.incidentQueue.Add(new QueuedIncident(
                             new FiringIncident(IncidentDefOf.OrbitalTraderArrival, null,
