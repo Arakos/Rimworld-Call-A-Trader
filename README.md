@@ -10,8 +10,8 @@ This mod enables your pawns to request an orbital trader from the 'Orbital Trade
 ![](Misc/steamworkshop/menu_comms_console.png)
 * Adds an incident event where you can choose if you want to receive an orbital trader in the near future.
 ![](Misc/steamworkshop/event_screen_example.png)
-* Costs, Delay and Cooldown for the Call-Action are configurable.
-![](Misc/steamworkshop/modoptions.png )
+* Costs, Delay, Cooldown and Letter-Timeout for the Call-Action are configurable.
+![](Misc/steamworkshop/modoptions.png)
 
 ## Savegame Compatibility
 It should be safe to add/remove this mod to/from your safegames at any time.
