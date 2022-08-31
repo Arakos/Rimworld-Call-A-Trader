@@ -34,6 +34,14 @@ namespace Arakos.CallATrader
 
             base.label = (Constants.MOD_PREFIX + TRADER_LETTER + "label").Translate();
             base.text = (Constants.MOD_PREFIX + TRADER_LETTER + "text").Translate(GenDate.ToStringTicksToPeriod(delay, allowSeconds: false, canUseDecimals: false), fee);
+
+            if (CallATrader.settings.timeoutActive)
+            {
+                int letterTimeout = CallATrader.settings.timoutRange.RandomInRange * GenDate.TicksPerHour;
+                base.text = base.text + "\n\n"
+                    + (Constants.MOD_PREFIX + TRADER_LETTER + "timeout").Translate(GenDate.ToStringTicksToPeriod(letterTimeout, allowSeconds: false, canUseDecimals: false));
+                StartTimeout(letterTimeout);
+            }
         }
 
         public override void ExposeData()
@@ -109,6 +117,7 @@ namespace Arakos.CallATrader
                 }
 
                 yield return CreateDiaOption((Constants.MOD_PREFIX + TRADER_LETTER + "refuse").Translate());
+                yield return base.Option_Postpone;
                 yield break;
             }
         }

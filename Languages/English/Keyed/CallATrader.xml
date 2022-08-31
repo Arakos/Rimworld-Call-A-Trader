@@ -18,6 +18,7 @@
 	<!-- Trader offer letter -->
 	<acat.traderletter.label>Offer from Orbital Traders Hub</acat.traderletter.label>
 	<acat.traderletter.text>The Orbital Traders Hub offers to send an orbital trader ship to your location in {0}.\n\nThey request an upfront fee of {1} silver to cover their costs for adjusting the ships route.\n\nThe silver will be teleported to the hub immediately - if you accept.\n</acat.traderletter.text>
+	<acat.traderletter.timeout>They give you {0} to decide.</acat.traderletter.timeout>
 	<acat.traderletter.accept>Request {0}</acat.traderletter.accept>
 	<acat.traderletter.refuse>Decline the offer</acat.traderletter.refuse>
 	<acat.traderletter.disabled>{0}/{1} silver</acat.traderletter.disabled>
@@ -30,9 +31,13 @@
 	<acat.delayrange>Delay range (days)</acat.delayrange>
 	<acat.delayrange.description>Range of delay a trader ship will have until it finally shows up</acat.delayrange.description>
 	<acat.cooldownrange>Cooldown range (days)</acat.cooldownrange>
-	<acat.cooldownrange.description>Range of cooldown time between  the Orbital Traders Hub can be called once again</acat.cooldownrange.description>
+	<acat.cooldownrange.description>Range of cooldown time between the Orbital Traders Hub can be called once again</acat.cooldownrange.description>
 	<acat.canselectkind>Freely selectable trader type</acat.canselectkind>
 	<acat.canselectkind.description>Determines if you can choose between all or only one random type of trader to show up</acat.canselectkind.description>
 	<acat.randomeventallowed>Enable the radom event</acat.randomeventallowed>
 	<acat.randomeventallowed.description>Enable the Orbital Traders Hub offer-letter as random event that might occur without triggering it via commons console</acat.randomeventallowed.description>
+	<acat.timeoutrange>Timeout range (hours)</acat.timeoutrange>
+	<acat.timeoutrange.description>Range for the timeout that offers from the orbital traders hub will expire after if you dont react to them</acat.timeoutrange.description>
+	<acat.timeoutactive>Enable offer timeout</acat.timeoutactive>
+	<acat.timeoutactive.description>If enabled offers from the Orbital Traders Hub will expire after a given timeout period</acat.timeoutactive.description>
 </LanguageData>

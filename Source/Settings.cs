@@ -16,10 +16,14 @@ namespace Arakos.CallATrader
         private static readonly IntRange boundsDelayRange = new IntRange(0, 15);
         // between 0 and 60 day (one year) delay for tradeship events is configurabe
         private static readonly IntRange boundsCooldownRange = new IntRange(0, 60);
+        // between 1 and 72h timout for an offer
+        private static readonly IntRange boundsTimeoutRange = new IntRange(1, 72);
 
         public IntRange costRange = new IntRange(400, 600);
         public IntRange delayRange = new IntRange(2, 5);
         public IntRange cooldownRange = new IntRange(10, 30);
+        public IntRange timoutRange = new IntRange(12, 42);
+        public bool timeoutActive = true;
         public bool canSelectTraderType = true;
         public bool randomEventAllowed = true;
 
@@ -29,6 +33,8 @@ namespace Arakos.CallATrader
             Scribe_Values.Look(ref costRange, Constants.COSTS_RANGE, new IntRange(400, 600), true);
             Scribe_Values.Look(ref delayRange, Constants.DELAY_RANGE, new IntRange(2, 5), true);
             Scribe_Values.Look(ref cooldownRange, Constants.COOLDOWN_RANGE, new IntRange(10, 30), true);
+            Scribe_Values.Look(ref timoutRange, Constants.TIMEOUT_RANGE, new IntRange(12, 42), true);
+            Scribe_Values.Look(ref timeoutActive, Constants.TIMEOUT_ACTIVE, true, true);
             Scribe_Values.Look(ref canSelectTraderType, Constants.CAN_SELECT_KIND, true, true);
             Scribe_Values.Look(ref randomEventAllowed, Constants.RANDOM_EVENT_ALLOWED, true, true);
         }
@@ -41,7 +47,15 @@ namespace Arakos.CallATrader
             list.CheckboxLabeled(Constants.RANDOM_EVENT_ALLOWED.Translate(), ref randomEventAllowed, (Constants.RANDOM_EVENT_ALLOWED + Constants.DESCRIPTION).Translate());
 
             list.CheckboxLabeled(Constants.CAN_SELECT_KIND.Translate(), ref canSelectTraderType, (Constants.CAN_SELECT_KIND + Constants.DESCRIPTION).Translate());
-            
+
+            list.CheckboxLabeled(Constants.TIMEOUT_ACTIVE.Translate(), ref timeoutActive, (Constants.TIMEOUT_ACTIVE + Constants.DESCRIPTION).Translate());
+
+            if (timeoutActive)
+            {
+                list.Label(Constants.TIMEOUT_RANGE.Translate(), tooltip: (Constants.TIMEOUT_RANGE + Constants.DESCRIPTION).Translate());
+                list.IntRange(ref timoutRange, boundsTimeoutRange.min, boundsTimeoutRange.max);
+            }
+
             list.Label(Constants.COSTS_RANGE.Translate(), tooltip: (Constants.COSTS_RANGE + Constants.DESCRIPTION).Translate());
             list.IntRange(ref costRange, boundsCostRange.min, boundsCostRange.max);
 

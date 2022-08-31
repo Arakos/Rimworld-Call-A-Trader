@@ -18,6 +18,8 @@ namespace Arakos.CallATrader
         internal static readonly string COSTS_RANGE = MOD_PREFIX + ".costsrange";
         internal static readonly string DELAY_RANGE = MOD_PREFIX + ".delayrange";
         internal static readonly string COOLDOWN_RANGE = MOD_PREFIX + ".cooldownrange";
+        internal static readonly string TIMEOUT_RANGE = MOD_PREFIX + ".timeoutrange";
+        internal static readonly string TIMEOUT_ACTIVE = MOD_PREFIX + ".timeoutactive";
         internal static readonly string CAN_SELECT_KIND = MOD_PREFIX + ".canselectkind";
         internal static readonly string RANDOM_EVENT_ALLOWED = MOD_PREFIX + ".randomeventallowed";
 

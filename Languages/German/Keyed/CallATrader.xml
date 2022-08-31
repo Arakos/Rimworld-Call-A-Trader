@@ -18,6 +18,7 @@
 	<!-- Trader offer letter -->
 	<acat.traderletter.label>Angebot der Fliegenden Hausierer</acat.traderletter.label>
 	<acat.traderletter.text>Die Fliegenden Hausierer bieten dir an eines ihrer Schiffe zu deiner Kolonie zu senden. Dies wird {0} dauern.\n\nSie fordern allerdings eine Sofortzahlung von {1} Silber um die Kosten der Routenanpassung zu decken.\n\nBei Angebotsannahme wird diese Summe sofort zur Zentrale der Fliegenden Hausierer teleportiert.\n</acat.traderletter.text>
+	<acat.traderletter.timeout>Sie geben dir {0} Bedenkzeit.</acat.traderletter.timeout>
 	<acat.traderletter.accept>Frage {0} an</acat.traderletter.accept>
 	<acat.traderletter.refuse>Angebot ablehnen</acat.traderletter.refuse>
 	<acat.traderletter.disabled>{0}/{1} Silber</acat.traderletter.disabled>
@@ -35,4 +36,8 @@
 	<acat.canselectkind.description>Legt fest ob eine Auswahl aller oder nur ein zufälliger Händlertyp im Angebot ausgewählt werden kann</acat.canselectkind.description>
 	<acat.randomeventallowed>Fliegenden Hausierer-Zwischenfall aktivieren</acat.randomeventallowed>
 	<acat.randomeventallowed.description>Aktiviert den "Angebot der Fliegenden Hausierer" Zwischenfall als Zufallsereignis, dass auch ohne getätigte Anfrage an der Funkzentrale auftreten kann</acat.randomeventallowed.description>
+	<acat.timeoutrange>Timeout Spanne (Stunden)</acat.timeoutrange>
+	<acat.timeoutrange.description>Zeitspanne die ein Angebot der Fliegenden Hausierer min- bzw. maximal gültig ist bevor es verfällt</acat.timeoutrange.description>
+	<acat.timeoutactive>Timeout aktivieren</acat.timeoutactive>
+	<acat.timeoutactive.description>Wenn aktiv ist jedes Angebot der Fliegenden Hausierer nur eine begrenzte Zeit gültig</acat.timeoutactive.description>
 </LanguageData>
