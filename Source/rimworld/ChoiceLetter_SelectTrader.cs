@@ -32,13 +32,13 @@ namespace Arakos.CallATrader
             this.delay = CallATrader.settings.delayRange.RandomInRange * GenDate.TicksPerDay;
             this.canSelectTraderType = CallATrader.settings.canSelectTraderType;
 
-            base.label = (Constants.MOD_PREFIX + TRADER_LETTER + "label").Translate();
-            base.text = (Constants.MOD_PREFIX + TRADER_LETTER + "text").Translate(GenDate.ToStringTicksToPeriod(delay, allowSeconds: false, canUseDecimals: false), fee);
+            base.Label = (Constants.MOD_PREFIX + TRADER_LETTER + "label").Translate();
+            base.Text = (Constants.MOD_PREFIX + TRADER_LETTER + "text").Translate(GenDate.ToStringTicksToPeriod(delay, allowSeconds: false, canUseDecimals: false), fee);
 
             if (CallATrader.settings.timeoutActive)
             {
                 int letterTimeout = CallATrader.settings.timoutRange.RandomInRange * GenDate.TicksPerHour;
-                base.text = base.text + "\n\n"
+                base.Text = base.Text + "\n\n"
                     + (Constants.MOD_PREFIX + TRADER_LETTER + "timeout").Translate(GenDate.ToStringTicksToPeriod(letterTimeout, allowSeconds: false, canUseDecimals: false));
                 StartTimeout(letterTimeout);
             }
