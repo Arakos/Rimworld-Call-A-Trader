@@ -1,15 +1,28 @@
-@echo off
+@echo on
 
 set RIMWORLD_MODS_DIR=../../../Mods
 set MOD_NAME=CallATrader
+set RIMWORLD_VERSION=1.4/
+
+git rev-parse --abbrev-ref HEAD > temp.txt
+set /p BRANCH=<temp.txt
+DEL temp.txt
+
+if "%BRANCH%" == "1.3" set RIMWORLD_VERSION=%BRANCH%/
+
 
 REM clear mod and copy latest files into the target mods dir
-rmdir /s /q "%RIMWORLD_MODS_DIR%/%MOD_NAME%"
+rmdir /s /q "%RIMWORLD_MODS_DIR%/%MOD_NAME%/About"
+rmdir /s /q "%RIMWORLD_MODS_DIR%/%MOD_NAME%/Defs"
+rmdir /s /q "%RIMWORLD_MODS_DIR%/%MOD_NAME%/Languages"
+rmdir /s /q "%RIMWORLD_MODS_DIR%/%MOD_NAME%/Textures"
+
 xcopy /e /i /y "../About" "%RIMWORLD_MODS_DIR%/%MOD_NAME%/About"
 xcopy /e /i /y "../Defs" "%RIMWORLD_MODS_DIR%/%MOD_NAME%/Defs"
-xcopy /e /i /y "../Assemblies" "%RIMWORLD_MODS_DIR%/%MOD_NAME%/Assemblies"
 xcopy /e /i /y "../Languages" "%RIMWORLD_MODS_DIR%/%MOD_NAME%/Languages"
 xcopy /e /i /y "../Textures" "%RIMWORLD_MODS_DIR%/%MOD_NAME%/Textures"
+
+xcopy /e /i /y "../Assemblies" "%RIMWORLD_MODS_DIR%/%MOD_NAME%/%RIMWORLD_VERSION%Assemblies"
 
 REM start rimworld
 set STEAM_REGKEY=HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Valve\Steam
