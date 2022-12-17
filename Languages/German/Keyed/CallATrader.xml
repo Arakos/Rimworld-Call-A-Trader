@@ -26,8 +26,13 @@
 	<acat.traderletter.payed>Die Zahlung von {0} Silber wurde zur Zentrale der Fliegenden Hausierer teleportiert.</acat.traderletter.payed>
 	
 	<!-- Mod options menu -->
-	<acat.costsrange>Kosten (Silber)</acat.costsrange>
-	<acat.costsrange.description>Spannweite der Kosten, die die Fliegenden Hausierer für ihren Service einfordern werden</acat.costsrange.description>
+	<acat.costsrange>Absolute Kosten (Silber)</acat.costsrange>
+	<acat.costsrange.description>Spannweite der Kosten, die die Fliegenden Hausierer für ihren Service einfordern werden (Kosten haben KEINEN Einfluss auf die Waren der Händler!)</acat.costsrange.description>
+	<acat.considercolonywealth>Koloniegesamtwert berücksichtigen</acat.considercolonywealth>
+	<acat.considercolonywealth.description>Kosten für die Fliegenden Hausierer aus absolutem Bereich in Silver oder dynamisch relativ zum Koloniewert errechnen</acat.considercolonywealth.description>
+	<acat.costsrange.relative>Relative Kosten (% Koloniewert)</acat.costsrange.relative>
+	<acat.costsrange.relative.description>Spannweite zur Berechnung der Kosten für die Fliegenden Hausierer durch "Koloniewert * Wert-aus-Bereich in %" der aktiven Kolonie (Kosten haben KEINEN Einfluss auf die Waren der Händler!)</acat.costsrange.relative.description>
+	
 	<acat.delayrange>Verzögerung (Tage)</acat.delayrange>
 	<acat.delayrange.description>Spannweite der Verzögerung die der Service der Fliegenden Hausierer haben kann</acat.delayrange.description>
 	<acat.cooldownrange>Abklingzeit (Tage)</acat.cooldownrange>

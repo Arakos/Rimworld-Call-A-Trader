@@ -26,8 +26,13 @@
 	<acat.traderletter.payed>The fee of {0} Silver was yeeted to the Orbital Traders Hub</acat.traderletter.payed>
 	
 	<!-- Mod options menu -->
-	<acat.costsrange>Cost range (silver)</acat.costsrange>
-	<acat.costsrange.description>Range of silver the Orbital Traders Hub will request to send a ship</acat.costsrange.description>
+	<acat.costsrange>Absolute costrange (silver)</acat.costsrange>
+	<acat.costsrange.description>Absolute range of silver the Orbital Traders Hub will request from you to send a ship (Costs have NO IMPACT on the ships stock!)</acat.costsrange.description>
+	<acat.considercolonywealth>Consider Colonys Wealth</acat.considercolonywealth>
+	<acat.considercolonywealth.description>Wether the Traderships cost will be selected from a static, absolute range or dynamically calculated using the colonywealth</acat.considercolonywealth.description>
+	<acat.costsrange.relative>Relative costrange (% Colonywealth)</acat.costsrange.relative>
+	<acat.costsrange.relative.description>The Orbital Traders Hub shipcosts will scale with your colonies wealth "Colonywealth * value-in-range in %" (Costs have NO IMPACT on the ships stock!)</acat.costsrange.relative.description>
+	
 	<acat.delayrange>Delay range (days)</acat.delayrange>
 	<acat.delayrange.description>Range of delay a trader ship will have until it finally shows up</acat.delayrange.description>
 	<acat.cooldownrange>Cooldown range (days)</acat.cooldownrange>

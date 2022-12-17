@@ -28,9 +28,9 @@ namespace Arakos.CallATrader
             base.ID = Find.UniqueIDsManager.GetNextLetterID();
 
             this.map = map;
-            this.fee = (CallATrader.settings.costRange.RandomInRange / 10) * 10;
             this.delay = CallATrader.settings.delayRange.RandomInRange * GenDate.TicksPerDay;
             this.canSelectTraderType = CallATrader.settings.canSelectTraderType;
+            this.fee = CalcFee(map);
 
             base.Label = (Constants.MOD_PREFIX + TRADER_LETTER + "label").Translate();
             base.Text = (Constants.MOD_PREFIX + TRADER_LETTER + "text").Translate(GenDate.ToStringTicksToPeriod(delay, allowSeconds: false, canUseDecimals: false), fee);
@@ -42,6 +42,20 @@ namespace Arakos.CallATrader
                     + (Constants.MOD_PREFIX + TRADER_LETTER + "timeout").Translate(GenDate.ToStringTicksToPeriod(letterTimeout, allowSeconds: false, canUseDecimals: false));
                 StartTimeout(letterTimeout);
             }
+        }
+
+        private int CalcFee(Map map)
+        {
+            int res;
+            if (CallATrader.settings.considerColonyWealth)
+            {
+                res = (int)(map.wealthWatcher.WealthTotal * CallATrader.settings.relativeCostRange.RandomInRange / 100f);
+            }
+            else
+            {
+                res = (CallATrader.settings.absolutCostRange.RandomInRange / 10) * 10;
+            }
+            return res;
         }
 
         public override void ExposeData()
