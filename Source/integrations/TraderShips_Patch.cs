@@ -47,7 +47,7 @@ namespace Arakos.CallATrader
 
                     harmony.Patch(method_TryExecuteWorker, prefix: new HarmonyMethod(typeof(TraderShips_Patch).GetMethod(nameof(TraderShips_Patch.TryExecuteWorker_Patch))));
 
-                    Log.Message($"Mod Call A Trader integrated with Mod { mod_TraderShips.Name }.");
+                    Log.Message($"Call A Trader successfully patched { mod_TraderShips.Name }.");
                 }
                 catch (Exception ex)
                 {
