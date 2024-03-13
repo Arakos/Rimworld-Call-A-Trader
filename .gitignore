@@ -2,6 +2,6 @@ obj/
 Source/obj/
 Source/bin/
 Source/packages/
-Assemblies/
+/Assemblies/
 Source/.vs/
 Thumbs.db
