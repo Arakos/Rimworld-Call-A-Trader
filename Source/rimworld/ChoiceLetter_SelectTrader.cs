@@ -32,14 +32,14 @@ namespace Arakos.CallATrader
             this.canSelectTraderType = CallATrader.settings.canSelectTraderType;
             this.fee = CalcFee(map);
 
-            base.Label = (Constants.MOD_PREFIX + TRADER_LETTER + "label").Translate();
-            base.Text = (Constants.MOD_PREFIX + TRADER_LETTER + "text").Translate(GenDate.ToStringTicksToPeriod(delay, allowSeconds: false, canUseDecimals: false), fee);
+            base.label = (Constants.MOD_PREFIX + TRADER_LETTER + "label").Translate();
+            base.text = (Constants.MOD_PREFIX + TRADER_LETTER + "text").Translate(GenDate.ToStringTicksToPeriod(delay, allowSeconds: false, canUseDecimals: false), fee);
 
             // set timeout if avtive
             if (CallATrader.settings.timeoutActive)
             {
                 int letterTimeout = CallATrader.settings.timoutRange.RandomInRange * GenDate.TicksPerHour;
-                base.Text = base.Text + "\n\n"
+                base.text = base.text + "\n\n"
                     + (Constants.MOD_PREFIX + TRADER_LETTER + "timeout").Translate(GenDate.ToStringTicksToPeriod(letterTimeout, allowSeconds: false, canUseDecimals: false));
                 StartTimeout(letterTimeout);
             }
@@ -51,7 +51,7 @@ namespace Arakos.CallATrader
                 .Sum(t => t.stackCount);
             if (availableSilver < this.fee)
             {
-                base.Text = base.Text + "\n\n\n" + (Constants.MOD_PREFIX + TRADER_LETTER + "nofunds").Translate();
+                base.text = base.text + "\n\n\n" + (Constants.MOD_PREFIX + TRADER_LETTER + "nofunds").Translate();
             }
         }
 
