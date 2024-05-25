@@ -17,9 +17,9 @@ This mod allows your pawns to request an orbital trader from the 'Orbital Trader
 It should be safe to add/remove this mod to/from your savegames at any time.
 
 ## Cross-Mod Compatibility
-If you have any of these mods installed known cross mod compatibilty problems shoud be fixed. This of course cannot be a guarantee everything will always work fine, so if you encounter any problems feel free to report them here.
+If you have any of these mods installed, known cross-mod compatibility problems should be fixed. This of course cannot be a guarantee everything will always work fine, so if you encounter any problems feel free to report them here.
 * [AUTOMATIC's Trader Ships Mod](https://steamcommunity.com/workshop/filedetails/?id=2046222331)
-  * Fix: Now spawns the correct type of tradeship requested with Call A Trader's event
+  * Fix: Now spawns the correct type of trade-ship requested with Call A Trader's event
 
 ## Other
 _This mod was inspired by [KiameV's "Call Trade Ships" mod](https://github.com/KiameV/rimworld-calltradeships)._
