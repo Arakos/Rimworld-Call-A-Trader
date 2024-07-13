@@ -35,12 +35,23 @@ namespace Arakos.CallATrader
             base.Label = (Constants.MOD_PREFIX + TRADER_LETTER + "label").Translate();
             base.Text = (Constants.MOD_PREFIX + TRADER_LETTER + "text").Translate(GenDate.ToStringTicksToPeriod(delay, allowSeconds: false, canUseDecimals: false), fee);
 
+            // set timeout if avtive
             if (CallATrader.settings.timeoutActive)
             {
                 int letterTimeout = CallATrader.settings.timoutRange.RandomInRange * GenDate.TicksPerHour;
                 base.Text = base.Text + "\n\n"
                     + (Constants.MOD_PREFIX + TRADER_LETTER + "timeout").Translate(GenDate.ToStringTicksToPeriod(letterTimeout, allowSeconds: false, canUseDecimals: false));
                 StartTimeout(letterTimeout);
+            }
+
+            // if there are non sufficient silver funds available when the latter is generated
+            // add a hint that the silver must be in range of an active orbital trade beacon
+            int availableSilver = TradeUtility.AllLaunchableThingsForTrade(map)
+                .Where(t => t.def == ThingDefOf.Silver)
+                .Sum(t => t.stackCount);
+            if (availableSilver < this.fee)
+            {
+                base.Text = base.Text + "\n\n\n" + (Constants.MOD_PREFIX + TRADER_LETTER + "nofunds").Translate();
             }
         }
 
