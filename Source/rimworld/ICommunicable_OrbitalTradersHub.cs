@@ -8,34 +8,35 @@ namespace Arakos.CallATrader
 
     public class ICommunicable_OrbitalTradersHub : ICommunicable
     {
-        private readonly FloatMenuOption callTraderOption = new FloatMenuOption("", null, Textures.ORBITAL_TRADER_HUB_ICON, Color.white, MenuOptionPriority.Default);
 
-        private Building_CommsConsole cachedConsole;
-
-        private Pawn cachedPawn;
-
-        // this method gets invoked permanently while the comms console options menu is open - hence use caching
+        // Note: this method gets invoked permanently while the comms console options menu is open
         public FloatMenuOption CommFloatMenuOption(Building_CommsConsole console, Pawn negotiator)
         {
-
-            bool cacheValid = System.Object.Equals(cachedConsole, console) && System.Object.Equals(cachedPawn, negotiator);
-            cachedPawn = negotiator;
-            cachedConsole = console;
-
             // get ticks the call trader action is disabled for
             int disabledForTicks = CallATrader.state.traderRequestActionDisabledUntil - Find.TickManager.TicksAbs;
 
-            // must be done this way because the impl of disabled in FloatMenuOption is retarded
+            FloatMenuOption callTraderOption = new FloatMenuOption(
+                (Constants.MOD_PREFIX + ".console.label").Translate(),
+                () => negotiator.jobs.TryTakeOrderedJob(
+                        JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed(Constants.JOB_DEF_NAME, true), console), 
+                        JobTag.MiscWork
+                    ),
+                Textures.ORBITAL_TRADER_HUB_ICON, 
+                Color.white, 
+                MenuOptionPriority.Default
+            );
+
+            // if still disabled don't show the option
             if (disabledForTicks > 0)
             {
                 callTraderOption.Disabled = true;
-                callTraderOption.Label = (Constants.MOD_PREFIX + ".console.label.disabled").Translate(GenDate.ToStringTicksToPeriod(disabledForTicks, shortForm: false));
+                callTraderOption.Label = (Constants.MOD_PREFIX + ".console.label.disabled")
+                    .Translate(GenDate.ToStringTicksToPeriod(disabledForTicks, shortForm: false));
             }
-            else if (callTraderOption.Disabled || !cacheValid)
+            else
             {
-                callTraderOption.Disabled = false;
-                callTraderOption.Label = (Constants.MOD_PREFIX + ".console.label").Translate();
-                callTraderOption.action = () => negotiator.jobs.TryTakeOrderedJob(JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed(Constants.JOB_DEF_NAME, true), console), JobTag.MiscWork);
+                // checks if the coms console is already reserved by another pawn
+                // and displays that info on the menu option accordingly
                 FloatMenuUtility.DecoratePrioritizedTask(callTraderOption, negotiator, console);
             }
             return callTraderOption;
