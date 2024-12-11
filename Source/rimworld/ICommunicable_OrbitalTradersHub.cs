@@ -49,7 +49,6 @@ namespace Arakos.CallATrader
 
         public Faction GetFaction()
         {
-            Log.Message("getfactioncalled");
             return null;
         }
 
@@ -60,7 +59,6 @@ namespace Arakos.CallATrader
 
         public void TryOpenComms(Pawn negotiator)
         {
-            Log.Message("tryopencomms " + negotiator);
         }
     }
 }

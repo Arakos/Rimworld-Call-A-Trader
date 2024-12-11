@@ -22,6 +22,7 @@ namespace Arakos.CallATrader
         internal static readonly string TIMEOUT_RANGE = MOD_PREFIX + ".timeoutrange";
         internal static readonly string TIMEOUT_ACTIVE = MOD_PREFIX + ".timeoutactive";
         internal static readonly string CAN_SELECT_KIND = MOD_PREFIX + ".canselectkind";
+        internal static readonly string REQUIRE_ACTIVE_COMMS_CONSOLE = MOD_PREFIX + ".requireactivecommsconsole";
         internal static readonly string RANDOM_EVENT_ALLOWED = MOD_PREFIX + ".randomeventallowed";
         internal static readonly string CONSIDER_COLONY_WEALTH = MOD_PREFIX + ".considercolonywealth"; 
 

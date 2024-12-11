@@ -29,7 +29,7 @@ namespace Arakos.CallATrader
         {
             Building_CommsConsole commsConsole = this.job.targetA.Thing as Building_CommsConsole;
             this.FailOnDespawnedNullOrForbidden(TargetIndex.A)
-                .FailOn(() => !commsConsole.CanUseCommsNow)
+                .FailOn(() => commsConsole == null || !commsConsole.CanUseCommsNow)
                 .FailOn(() => CallATrader.state.traderRequestActionDisabledUntil > Find.TickManager.TicksAbs);
 
             Toil talkToTrader = new Toil

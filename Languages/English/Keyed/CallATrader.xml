@@ -14,6 +14,7 @@
 	<acat.incident.refusal.base>The Orbital Traders Hub has to decline your trading request.</acat.incident.refusal.base>
 	<acat.incident.refusal.toomanytraders>This is because there are too many ({0}) tradeships at your location already.</acat.incident.refusal.toomanytraders>
 	<acat.incident.refusal.noorbitaltradersavailable>This is because they currently have no traders available near your colony.</acat.incident.refusal.noorbitaltradersavailable>
+	<acat.incident.infomessage.noactivecommsconsole>The reply letter from the Orbital Traders Hub was lost in space because there is no active comms console on the current map.</acat.incident.infomessage.noactivecommsconsole>
 
 	<!-- Trader offer letter -->
 	<acat.traderletter.label>Offer from Orbital Traders Hub</acat.traderletter.label>
@@ -38,6 +39,8 @@
 	<acat.delayrange.description>Range of delay a trader ship will have until it finally shows up</acat.delayrange.description>
 	<acat.cooldownrange>Cooldown range (days)</acat.cooldownrange>
 	<acat.cooldownrange.description>Range of cooldown time between the Orbital Traders Hub can be called once again</acat.cooldownrange.description>
+	<acat.requireactivecommsconsole>Require active comms console</acat.requireactivecommsconsole>
+	<acat.requireactivecommsconsole.description>Determines if at least one active comms console is required on the active map to receive any trader ship letters</acat.requireactivecommsconsole.description>
 	<acat.canselectkind>Freely selectable trader type</acat.canselectkind>
 	<acat.canselectkind.description>Determines if you can choose between all or only one random type of trader to show up</acat.canselectkind.description>
 	<acat.randomeventallowed>Enable the radom event</acat.randomeventallowed>

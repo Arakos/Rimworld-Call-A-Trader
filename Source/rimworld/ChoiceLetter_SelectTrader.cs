@@ -94,7 +94,7 @@ namespace Arakos.CallATrader
 
                 // check game conditions still allow triggering the offer event now to determine if trader selection can continue
                 // if not a refusal notice will be send here as well
-                if (IncidentWorker_OrbitalTraderVisitingOffer.TryExecuteWorkerInternal(
+                if (IncidentWorker_OrbitalTraderVisitingOffer.SendSelectTraderLetterOrRefusal(
                     this.map, orbitalTraderDefs, IncidentWorker_OrbitalTraderVisitingOffer.IncidentTrigger.LETTER_EVENT))
                 {
                     yield return CreateDiaOption((Constants.MOD_PREFIX + TRADER_LETTER + "error.ok").Translate());

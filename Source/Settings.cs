@@ -28,6 +28,7 @@ namespace Arakos.CallATrader
         public bool timeoutActive = true;
         public bool canSelectTraderType = true;
         public bool randomEventAllowed = true;
+        public bool requireActiveCommsConosle = true;
         public bool considerColonyWealth = false;
 
         private string minBuff = "";
@@ -44,6 +45,7 @@ namespace Arakos.CallATrader
             Scribe_Values.Look(ref timoutRange, Constants.TIMEOUT_RANGE, timoutRange, true);
             Scribe_Values.Look(ref timeoutActive, Constants.TIMEOUT_ACTIVE, timeoutActive, true);
             Scribe_Values.Look(ref canSelectTraderType, Constants.CAN_SELECT_KIND, canSelectTraderType, true);
+            Scribe_Values.Look(ref requireActiveCommsConosle, Constants.REQUIRE_ACTIVE_COMMS_CONSOLE, requireActiveCommsConosle, true);
             Scribe_Values.Look(ref randomEventAllowed, Constants.RANDOM_EVENT_ALLOWED, randomEventAllowed, true);
             Scribe_Values.Look(ref considerColonyWealth, Constants.CONSIDER_COLONY_WEALTH, considerColonyWealth, true);
             minBuff = considerColonyWealth ? relativeCostRange.min.ToString() : absolutCostRange.min.ToString();
@@ -57,6 +59,7 @@ namespace Arakos.CallATrader
             list.Begin(rect);
 
             list.CheckboxLabeled(Constants.RANDOM_EVENT_ALLOWED.Translate(), ref randomEventAllowed, (Constants.RANDOM_EVENT_ALLOWED + Constants.DESCRIPTION).Translate());
+            list.CheckboxLabeled(Constants.REQUIRE_ACTIVE_COMMS_CONSOLE.Translate(), ref requireActiveCommsConosle, (Constants.REQUIRE_ACTIVE_COMMS_CONSOLE + Constants.DESCRIPTION).Translate());
             list.CheckboxLabeled(Constants.CAN_SELECT_KIND.Translate(), ref canSelectTraderType, (Constants.CAN_SELECT_KIND + Constants.DESCRIPTION).Translate());
             list.CheckboxLabeled(Constants.TIMEOUT_ACTIVE.Translate(), ref timeoutActive, (Constants.TIMEOUT_ACTIVE + Constants.DESCRIPTION).Translate());
 
