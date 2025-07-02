@@ -12,6 +12,7 @@ REM copy Assemblies depending on branch
 if "%BRANCH%" == "1.3" xcopy /e /i /y "../Assemblies" "%RIMWORLD_MODS_DIR%/%MOD_NAME%/1.3/Assemblies"
 if "%BRANCH%" == "1.4" xcopy /e /i /y "../Assemblies" "%RIMWORLD_MODS_DIR%/%MOD_NAME%/1.4/Assemblies"
 if "%BRANCH%" == "1.5" xcopy /e /i /y "../Assemblies" "%RIMWORLD_MODS_DIR%/%MOD_NAME%/1.5/Assemblies"
+if "%BRANCH%" == "1.6" xcopy /e /i /y "../Assemblies" "%RIMWORLD_MODS_DIR%/%MOD_NAME%/1.6/Assemblies"
 
 REM clear mod and copy latest files into the target mods dir
 rmdir /s /q "%RIMWORLD_MODS_DIR%/%MOD_NAME%/About"

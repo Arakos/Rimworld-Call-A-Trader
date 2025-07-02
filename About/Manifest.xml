@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Manifest>
-    <version>1.5.2</version>
+    <version>1.6.0</version>
     <identifier>arakos.callatrader.acat</identifier>
     <manifestUri>https://raw.githubusercontent.com/Arakos/Rimworld-Call-A-Trader/master/About/Manifest.xml</manifestUri>
     <downloadUri>https://github.com/Arakos/Rimworld-Call-A-Trader</downloadUri>
