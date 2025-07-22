@@ -14,7 +14,6 @@
 	<acat.incident.refusal.base>Die Fliegenden Hausierer haben deine Anfrage einen Händler zu schicken abgelehnt.</acat.incident.refusal.base>
 	<acat.incident.refusal.toomanytraders>Dies begründen sie damit, dass bereits zu viele ({0}) Handelsshiffe in deiner Kolonie zugegen sind.</acat.incident.refusal.toomanytraders>
 	<acat.incident.refusal.noorbitaltradersavailable>Dies begründen sie damit, dass sie aktuell aus Gründen keine Handelsshiffe zu deiner Kolonie senden können.</acat.incident.refusal.noorbitaltradersavailable>
-	<acat.incident.infomessage.noactivecommsconsole>Eine Antwort der Fliegenden Hausierer konnte nicht empfangen werden da es keine active Kommunikations-Station auf der Karte gibt.</acat.incident.infomessage.noactivecommsconsole>
 	
 	<!-- Trader offer letter -->
 	<acat.traderletter.label>Angebot der Fliegenden Hausierer</acat.traderletter.label>
@@ -39,8 +38,6 @@
 	<acat.delayrange.description>Spannweite der Verzögerung die der Service der Fliegenden Hausierer haben kann</acat.delayrange.description>
 	<acat.cooldownrange>Abklingzeit (Tage)</acat.cooldownrange>
 	<acat.cooldownrange.description>Spannweite der Abklingzeit für Anfragen an die Fliegenden Hausierer </acat.cooldownrange.description>
-	<acat.requireactivecommsconsole>Aktive Kommunikations-Station notwendig</acat.requireactivecommsconsole>
-	<acat.requireactivecommsconsole.description>Legt fest dass es mindestens eine aktive Kommunikations-Station auf der aktiven Karte geben muss um Nachrichten der Fliegenden Hausierer erhalten zu können.</acat.requireactivecommsconsole.description>
 	<acat.canselectkind>Händlertyp frei wählbar</acat.canselectkind>
 	<acat.canselectkind.description>Legt fest ob eine Auswahl aller oder nur ein zufälliger Händlertyp im Angebot ausgewählt werden kann</acat.canselectkind.description>
 	<acat.randomeventallowed>Fliegenden Hausierer-Zwischenfall aktivieren</acat.randomeventallowed>
